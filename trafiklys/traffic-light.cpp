@@ -178,13 +178,6 @@ void TrafficLight::slave_receiveClock ()
   changeState();
 }
 
-void TrafficLight::monoWakeFromReset ()
-{
-  setAutoSleep();
-  lights.requestDismiss();
-  cornerSelector.show();
-}
-
 void TrafficLight::setAutoSleep ()
 {
   sleeper.setInterval(5 * 60 * 1000);
@@ -279,4 +272,7 @@ TrafficLight::TrafficLight ()
 {
   CyPins_SlowSlew(J_RING1);
   CyPins_SlowSlew(J_RING2);
+  setAutoSleep();
+  lights.requestDismiss();
+  cornerSelector.show();
 }
